@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title></title>
+    </head>
+    <body>
+        <h1>Todo Items for "{{ todo }}"</h1>
+        <ul>
+            {% for item in items %}
+                <li>{{ item.text }}</li>
+            {% empty %}
+                <li>No items found.</li>
+            {% endfor %}
+        </ul>
+    </body>
+</html>
