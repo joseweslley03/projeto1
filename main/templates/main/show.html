@@ -6,13 +6,22 @@
         <title></title>
     </head>
     <body>
-        <h1>Todo Items for "{{ todo }}"</h1>
+        <h1> Compras Semanais </h1>
+        <button> Voltar </button>
+        <br>
+        <form method="">
+            <input type="text" id="lista" name="lista" placeholder = "Novo item"> <button> Adicionar </button>
+            <br><br>
+        </form>
+    <form method="">
         <ul>
             {% for item in items %}
-                <li>{{ item.text }}</li>
-            {% empty %}
-                <li>No items found.</li>
+            <li>
+             {{ item.text }} 
+             <button type= 'submit'> Concluido </button> 
+             <button type= 'submit'> Excluir </button>
+            </li>
             {% endfor %}
-        </ul>
+        <ul>
     </body>
 </html>
