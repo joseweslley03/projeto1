@@ -1,18 +1,15 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title></title>
-    </head>
-    <body>
-        <h1> {{ name }} </h1>
-        <a href="{% url 'index' %}"><button type="submit"> Voltar </button></a>
+{% extends 'main/base.html' %}
+
+{% block title %} {{name}} {% endblock %}
+<h1> {% block title_h1 %} {{name}} {% endblock %} </h1>
+
+{% block content %}
+        <a href="{% url 'index' %}"><button type="submit" class="btn btn-secondary"> Voltar </button></a>
         <br>
         <form method="post" action="{% url 'store-item' todo_id %}">
             {% csrf_token %}
             <input type="text" id="lista" name="text" placeholder = "Novo item"> 
-            <button> Adicionar </button>
+            <button class="btn btn-primary" > Adicionar </button>
             <br><br>
         </form>
         <ul>
@@ -21,19 +18,18 @@
             <form method="post" action="{% url 'put-item' item.id %}"  style="display: inline;">
                 {% csrf_token %}
                 {% if item.complete %} 
-                    <button type= 'submit'> Concluido </button>
+                    <button type= 'submit' class="btn btn-info"> Concluido </button>
                 {% else %}
-                    <button type= 'submit'> Pendente </button>
+                    <button type= 'submit' class="btn btn-warning" > Pendente </button>
                 {% endif %}
 
                 {{ item.text }} 
             </form>
             <form method="post" action="{% url 'destroy-item' item.todo.id item.id %}">
                 {% csrf_token %}
-            <button type="submit"> Excluir </button>
+            <button type="submit" class="btn btn-danger"> Excluir </button>
             </form>
             </li>
             {% endfor %}
         <ul>
-    </body>
-</html>
+{% endblock %}
