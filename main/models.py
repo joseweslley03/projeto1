@@ -13,5 +13,3 @@ class Item(models.Model):
     todo = models.ForeignKey(Todo, on_delete=models.CASCADE,related_name="items")
     text = models.TextField()
     complete = models.BooleanField(default=False)
-
-

@@ -1,0 +1,10 @@
+{% extends 'main/base.html' %}
+{% block title %} contato {% endblock %}
+{% block title_h1 %} fale conosco {% endblock %}
+{% block content%}
+<form action="{% url 'contato' %}" method="post">
+    {% csrf_token %}
+    {{form}}
+    <button type='submit'> Enviar </button>
+</form>
+{% endblock %}
